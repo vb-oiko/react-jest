@@ -21,23 +21,27 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
 
   return (
     <>
-      <label htmlFor="email">Email</label>
-      <input
-        type="email"
-        name="email"
-        id="email"
-        onChange={handleChange}
-        value={credentials.email}
-      />
+      <label htmlFor="email">
+        Email
+        <input
+          type="email"
+          name="email"
+          id="email"
+          onChange={handleChange}
+          value={credentials.email}
+        />
+      </label>
 
-      <label htmlFor="password">password</label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        onChange={handleChange}
-        value={credentials.password}
-      />
+      <label htmlFor="password">
+        Password
+        <input
+          type="password"
+          name="password"
+          id="password"
+          onChange={handleChange}
+          value={credentials.password}
+        />
+      </label>
 
       <button type="button" onClick={() => onSubmit(credentials)}>
         Login

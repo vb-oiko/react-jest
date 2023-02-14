@@ -1,28 +1,21 @@
 import React from "react";
+import api, { API_ERROR } from "../api/api";
 import { LoginForm } from "../components/LoginForm";
-import { Credentials } from "../types";
+import { Credentials, Tokens } from "../types";
 
 export const Login = () => {
-  const [tokens, setTokens] = React.useState();
+  const [tokens, setTokens] = React.useState<Tokens>();
 
   const [shouldShowError, setShouldShowError] = React.useState(false);
 
   const handleLogin = async (credentials: Credentials) => {
-    const response = await fetch("https://api.escuelajs.co/api/v1/auth/login", {
-      method: "POST",
-      body: JSON.stringify(credentials),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
-
-    if (response.ok) {
-      const tokens = await response.json();
+    try {
+      const tokens = await api.login(credentials);
       setTokens(tokens);
-    }
-
-    if (response.status === 401) {
-      setShouldShowError(true);
+    } catch (err) {
+      if (err instanceof Error && err.message === API_ERROR.UNAUTHORIZED) {
+        setShouldShowError(true);
+      }
     }
   };
 
