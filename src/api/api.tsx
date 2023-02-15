@@ -28,6 +28,8 @@ const login = async (credentials: Credentials) => {
   });
 };
 
-const api = { login };
+const api = { login ,
+//logout
+};
 
 export default api;

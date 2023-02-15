@@ -1,6 +1,7 @@
 import React from "react";
 import api, { API_ERROR } from "../api/api";
 import { LoginForm } from "../components/LoginForm";
+import { translations } from "../translations";
 import { Credentials, Tokens } from "../types";
 
 export const Login = () => {
@@ -24,13 +25,11 @@ export const Login = () => {
       <div></div>
       <article>
         {tokens ? (
-          <div>You are logged in</div>
+          <div>{translations.login_success}</div>
         ) : (
           <div>
             <LoginForm onSubmit={handleLogin} />
-            {shouldShowError ? (
-              <div>Email or password is not correct</div>
-            ) : null}
+            {shouldShowError ? <div>{translations.login_failed}</div> : null}
           </div>
         )}
       </article>

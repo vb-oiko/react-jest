@@ -7,8 +7,8 @@ export interface LoginFormProps {
 
 export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   const [credentials, setCredentials] = React.useState({
-    email: "john@mail.com",
-    password: "changeme",
+    email: "", // "john@mail.com",
+    password: "", // "changeme",
   });
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (ev) => {
